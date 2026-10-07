@@ -1,0 +1,13 @@
+@model StudentForm
+@{
+    ViewData["Title"] = "Добавление студента";
+}
+<h1>Добавление студента</h1>
+<form asp-action="Create" method="post" novalidate>
+    <div asp-validation-summary="All"></div>
+    <partial name="_StudentFields" model="Model" />
+    <div class="actions">
+        <button type="submit">Добавить студента</button>
+        <a class="button" asp-action="Index">Отмена</a>
+    </div>
+</form>

@@ -1,0 +1,23 @@
+@model Teacher
+<h2>Курсы преподавателя</h2>
+@if (Model.Courses.Count == 0)
+{
+    <p>У преподавателя пока нет курсов</p>
+}
+else
+{
+    <div class="table-wrap">
+        <table>
+            <thead><tr><th>ID курса</th><th>Название</th><th>Студентов</th><th>Действие</th></tr></thead>
+            <tbody>
+            @foreach (var course in Model.Courses.OrderBy(course => course.CourseId))
+            {
+                <tr>
+                    <td>@course.CourseId</td><td>@course.Title</td><td>@course.Students.Count</td>
+                    <td><a asp-controller="Courses" asp-action="Details" asp-route-id="@course.CourseId">Просмотр</a></td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    </div>
+}

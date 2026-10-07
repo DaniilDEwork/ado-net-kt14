@@ -1,0 +1,21 @@
+@model CourseForm
+@{
+    ViewData["Title"] = "Добавление курса";
+}
+<h1>Добавление курса</h1>
+@if (Model.Teachers.Count == 0)
+{
+    <p>Для добавления курса сначала нужен преподаватель</p>
+    <a class="button" asp-controller="Teachers" asp-action="Create">Добавить преподавателя</a>
+}
+else
+{
+    <form asp-action="Create" method="post" novalidate>
+        <div asp-validation-summary="All"></div>
+        <partial name="_CourseFields" model="Model" />
+        <div class="actions">
+            <button type="submit">Добавить курс</button>
+            <a class="button" asp-action="Index">Отмена</a>
+        </div>
+    </form>
+}

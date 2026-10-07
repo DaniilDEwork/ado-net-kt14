@@ -1,0 +1,25 @@
+@model CourseForm
+<label asp-for="Title">Название курса</label>
+<input asp-for="Title" maxlength="200" />
+<span asp-validation-for="Title"></span>
+<label asp-for="TeacherId">Преподаватель</label>
+<select asp-for="TeacherId" asp-items="Model.Teachers">
+    <option value="">Выберите преподавателя</option>
+</select>
+<span asp-validation-for="TeacherId"></span>
+<fieldset class="student-selection">
+    <legend>Студенты курса</legend>
+    @if (Model.Students.Count == 0)
+    {
+        <p>В системе пока нет студентов</p>
+    }
+    @foreach (var student in Model.Students)
+    {
+        <label class="check-option">
+            <input type="checkbox" name="StudentIds" value="@student.StudentId" checked="@Model.StudentIds.Contains(student.StudentId)" />
+            @student.Name
+        </label>
+    }
+</fieldset>
+<span asp-validation-for="StudentIds"></span>
+<p class="hint">Чтобы убрать студента с курса, снимите отметку и сохраните изменения</p>

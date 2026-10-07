@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>@ViewData["Title"] - КТ-14</title>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="site-title">КТ-14 - Отношения многие ко многим</div>
+            <nav>
+                <a asp-controller="Home" asp-action="Index">Главная</a>
+                <a asp-controller="Teachers" asp-action="Index">Преподаватели</a>
+                <a asp-controller="Students" asp-action="Index">Студенты</a>
+                <a asp-controller="Courses" asp-action="Index">Курсы</a>
+            </nav>
+        </div>
+    </header>
+    <main class="container content">
+        @if (TempData["Success"] is string message)
+        {
+            <p class="success">@message</p>
+        }
+        @RenderBody()
+    </main>
+    <footer class="container">ADO.NET - ASP.NET Core MVC - КТ-14</footer>
+</body>
+</html>

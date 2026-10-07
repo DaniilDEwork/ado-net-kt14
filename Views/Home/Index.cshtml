@@ -1,0 +1,23 @@
+@model HomeModel
+@{
+    ViewData["Title"] = "Главная";
+}
+<h1>Управление учебным процессом</h1>
+<p>Студенты могут записываться на несколько курсов, преподаватель может вести несколько курсов</p>
+<div class="table-wrap">
+    <table>
+        <thead><tr><th>Данные</th><th>Количество</th></tr></thead>
+        <tbody>
+            <tr><td>Преподаватели</td><td>@Model.TeachersCount</td></tr>
+            <tr><td>Студенты</td><td>@Model.StudentsCount</td></tr>
+            <tr><td>Курсы</td><td>@Model.CoursesCount</td></tr>
+            <tr><td>Записи на курсы</td><td>@Model.EnrollmentsCount</td></tr>
+        </tbody>
+    </table>
+</div>
+<div class="actions">
+    <a class="button" asp-controller="Teachers" asp-action="Index">Преподаватели</a>
+    <a class="button" asp-controller="Students" asp-action="Index">Студенты</a>
+    <a class="button" asp-controller="Courses" asp-action="Index">Курсы</a>
+</div>
+<p class="hint">Преподаватель и студенты выбираются при добавлении или изменении курса</p>

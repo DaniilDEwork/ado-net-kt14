@@ -1,0 +1,13 @@
+@model Course
+@{
+    ViewData["Title"] = "Удаление курса";
+}
+<h1>Удаление курса</h1>
+<p class="error">Курс и записи студентов на него будут удалены, преподаватель и студенты сохранятся</p>
+<partial name="_CourseInfo" model="Model" />
+<form asp-action="DeleteConfirmed" asp-route-id="@Model.CourseId" method="post">
+    <div class="actions">
+        <button class="danger" type="submit">Подтвердить удаление</button>
+        <a class="button" asp-action="Index">Отмена</a>
+    </div>
+</form>

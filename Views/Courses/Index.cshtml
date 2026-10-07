@@ -1,0 +1,33 @@
+@model List<Course>
+@{
+    ViewData["Title"] = "Курсы";
+}
+<h1>Курсы</h1>
+<a class="button" asp-action="Create">Добавить курс</a>
+@if (Model.Count == 0)
+{
+    <p>Список курсов пуст</p>
+}
+else
+{
+    <div class="table-wrap">
+        <table>
+            <thead><tr><th>ID</th><th>Название</th><th>Преподаватель</th><th>Студентов</th><th>Действия</th></tr></thead>
+            <tbody>
+            @foreach (var course in Model)
+            {
+                <tr>
+                    <td>@course.CourseId</td><td>@course.Title</td>
+                    <td><a asp-controller="Teachers" asp-action="Details" asp-route-id="@course.TeacherId">@course.Teacher.Name</a></td>
+                    <td>@course.Students.Count</td>
+                    <td><div class="table-actions">
+                        <a asp-action="Details" asp-route-id="@course.CourseId">Просмотр</a>
+                        <a asp-action="Edit" asp-route-id="@course.CourseId">Изменить</a>
+                        <a asp-action="Delete" asp-route-id="@course.CourseId">Удалить</a>
+                    </div></td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    </div>
+}

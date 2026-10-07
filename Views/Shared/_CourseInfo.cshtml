@@ -1,0 +1,28 @@
+@model Course
+<dl class="details">
+    <dt>ID курса</dt><dd>@Model.CourseId</dd>
+    <dt>Название</dt><dd>@Model.Title</dd>
+    <dt>Преподаватель</dt><dd><a asp-controller="Teachers" asp-action="Details" asp-route-id="@Model.TeacherId">@Model.Teacher.Name</a></dd>
+</dl>
+<h2>Студенты курса</h2>
+@if (Model.Students.Count == 0)
+{
+    <p>На курс пока никто не записан</p>
+}
+else
+{
+    <div class="table-wrap">
+        <table>
+            <thead><tr><th>ID студента</th><th>Имя</th><th>Действие</th></tr></thead>
+            <tbody>
+            @foreach (var student in Model.Students.OrderBy(student => student.StudentId))
+            {
+                <tr>
+                    <td>@student.StudentId</td><td>@student.Name</td>
+                    <td><a asp-controller="Students" asp-action="Details" asp-route-id="@student.StudentId">Просмотр</a></td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    </div>
+}

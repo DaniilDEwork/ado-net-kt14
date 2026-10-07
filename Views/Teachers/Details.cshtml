@@ -1,0 +1,17 @@
+@model Teacher
+@{
+    ViewData["Title"] = "Преподаватель";
+}
+<h1>Преподаватель</h1>
+<dl class="details">
+    <dt>ID</dt><dd>@Model.TeacherId</dd>
+    <dt>Имя</dt><dd>@Model.Name</dd>
+    <dt>Количество курсов</dt><dd>@Model.Courses.Count</dd>
+</dl>
+<partial name="_TeacherCourses" model="Model" />
+<div class="actions">
+    <a class="button" asp-controller="Courses" asp-action="Create" asp-route-teacherId="@Model.TeacherId">Добавить курс</a>
+    <a class="button" asp-action="Edit" asp-route-id="@Model.TeacherId">Изменить преподавателя</a>
+    <a class="button danger" asp-action="Delete" asp-route-id="@Model.TeacherId">Удалить</a>
+    <a class="button" asp-action="Index">К списку</a>
+</div>

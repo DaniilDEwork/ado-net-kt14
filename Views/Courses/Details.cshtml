@@ -1,0 +1,11 @@
+@model Course
+@{
+    ViewData["Title"] = "Курс";
+}
+<h1>Курс</h1>
+<partial name="_CourseInfo" model="Model" />
+<div class="actions">
+    <a class="button" asp-action="Edit" asp-route-id="@Model.CourseId">Изменить курс</a>
+    <a class="button danger" asp-action="Delete" asp-route-id="@Model.CourseId">Удалить</a>
+    <a class="button" asp-action="Index">К списку</a>
+</div>

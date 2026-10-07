@@ -1,0 +1,13 @@
+@model TeacherForm
+@{
+    ViewData["Title"] = "Изменение преподавателя";
+}
+<h1>Изменение преподавателя</h1>
+<form asp-action="Edit" asp-route-id="@Model.TeacherId" method="post" novalidate>
+    <div asp-validation-summary="All"></div>
+    <partial name="_TeacherFields" model="Model" />
+    <div class="actions">
+        <button type="submit">Сохранить изменения</button>
+        <a class="button" asp-action="Details" asp-route-id="@Model.TeacherId">Отмена</a>
+    </div>
+</form>
